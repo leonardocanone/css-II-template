@@ -1,0 +1,26 @@
+button:hover{
+    background-color: red;
+    color: white;
+}
+
+button:active{
+    background-color: pink;
+    color: red;
+}
+
+/* Aqui uma observação importante. Quando fazemos a aplicação das duas pseudoclasses hover e active num mesmo botão, como neste caso, para que o active funcione, ele precisa vir sempre depois do hover. */
+
+button{
+    display: block;
+    margin: 0 auto;
+    height: 35px;
+    /* width: 30vw;
+    text-align: left; */
+}
+
+/* main{
+    text-align: center;
+} */
+
+/* O que ACHO que entendi até agora sobre a centralização do botão foi o seguinte. O botão é inline, e está dentro da main, que é block, portanto o pai é um elemento block. A propriedade text-align controla o alinhamento horizontal de conteúdo inline (como texto, imagens, botões e elementos) quando o elemento pai é block. Por outro lado ela não controla o alinhamento de elementos block, mas isso é apenas um complemento sobre essa propriedade o qual acredito não se aplicar no problema da centralização do botão. Sendo assim, quando chamamaos a main e aplicamos o text-align, o botão é centralizado, pois cai na regra que já falamos, o botão é um elemento inline porém que está dentro de um pai(main) que é block. 
+Já se a gente NÃO quiser utilizar a técnica do text-align onde foi preciso chamar o pai(main), podemos também chamar o filho(button) e então utilizar a propriedade margin. Neste caso temos que alterar o display do botão de inline para block, e para o margin temos que informar que as margens superior e inferior devem ser definidas como 0, enquanto as margens esquerda e direita devem ser definidas como auto, e a mágica da centralização do botão acontece. Por fim é interessante dizer que o text-align até funciona dentro ali do button, onde está comentado, mas ele apenas altera a posição do texto dentro do botão, e não altera a posição do botão em si. */

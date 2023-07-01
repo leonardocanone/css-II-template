@@ -1,0 +1,28 @@
+h1, h2, h3, h4, h5, h6, p{
+    color: orange;
+}
+
+.texto-com-background{
+    background-color: yellow;
+    /* color: red; */
+}
+
+#texto-com-outra-cor{
+    color: green;
+}
+
+h1.teste-Leonardo{
+    background-color: black;
+}
+
+h4.teste-Leonardo{
+    background-color: greenyellow;
+}
+
+/* Aqui nas duas últimas chamadas de código acima, eu resolvi simular o tipo de combinador de Múltiplas condições, pois na Prática guiada não ficou legal a forma como isso foi explicado. O que eu fiz foi criar uma mesma classe no HTML tanto para o h1 quanto para o h4, e aqui então eu chamei o h1 mais o nome da classe, e personalizei ele, e fiz o mesmo com o h4, e assim ambos ficaram diferentes dos demais. É importante dizer que isso é possível porque inicialmente, tanto o h1 quanto o h4 foram personalizados por uma tag, que é mais fraca que a classe, portanto quando eu utilizei o h1 e o h4 como classe, ambos acataram as últimas alteraçoes, mantendo a customização original iniciada na utilização somente das tags. Acabei testando também chamar aqui abaixo a classe sem os h1 e o h4 pra ver se ela alterava o que já fiz acima, e o resultado é que nada aconteceu, portanto entendo que havendo uma personalização das tags h1 e h4 pelo método de classe, a chamada sozinha da classe se anula. Depois disso eu comentei a chamada do h4.teste-Leonardo, e a característica da tag h4 acatou a customização abaixo com fundo aqua. Caso não utilizasse nem h1 nem h4 com a classe de forma específica, ambas acatariam o fundo aqua que coloquei ao chamar a classe sozinha sem nenhuma das duas tags. 
+
+É interessante dizer também que conforme a hierarquia entre id, classe e tag, se personalizamos a letra de uma tag na cor laranja primeiro, e depois utilizamos uma classe para atribuir um fundo pra essa tag, ela não altera ou não anula essa primeira colorização feita no nível da tag. O que vai sobregravar isso, seria repetir a chamada de color por exemplo numa hierarquia maior, e então alterar a cor, e aí valeria essa última alteração, como se pode ver na na utilização do id texto-com-outra-cor onde inicialmente era laranja, e alteramos para verde.*/
+
+.teste-Leonardo{
+    background-color: aqua;
+}
