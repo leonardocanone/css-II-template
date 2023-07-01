@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
   }
+
   body{
     font-family: sans-serif;
     background-color: #004643;
@@ -11,13 +12,33 @@
     padding: 20px;
     color: #abd1c6;
   }
+
   main{
     height: 1200px;
     padding: 20px;
     background-color: #e8e4e6;
     margin: 10px;
+    position: relative;
   }
+  /* O texto do aside diz que ele é absoluto, ou seja, position: absolute, e que ele fica no canto inferior direito. Da forma que o exercício pede na Parte 2, confirguramos o aside pra que ele apareça sempre no canto inferior direito da tela no limite em que ela está sendo mostrada, ou seja, se a visualização está em 80% ela estará lá fixada no canto inferior direito, assim como quando aumentarmos a tela para 125%, ela vai acompanhar a mudança e estará lá novamente no canto inferior direito da página. No entanto quando rolamos a tela pra baixo, ela fica fixa no ponto em que configuramos o percentual de visualização da tela, o que é um pouco estranho, portanto como o aside está dentro da main, acrescentamos a position relative aqui no main, e o texto do aside ficou fixado no canto inferior direito da main, o que acaba fazendo mais sentido. Agora vamos explicar porque isso acontece. Como o aside está dentro da main (aqui o main é o pai e o aside é o filho), quando colocamos a position relative aqui no main(pai), a propriedade absolut que aplicamos primeiro ali no aside(filho) retira o elemento do fluxo natural e o posiciona em relação a outro elemento relative que o envolve (neste caso o main - pai), e por esse motivo o texto do aside vai parar lá no canto inferior do espaço da main. O problema é que essa alteração de inserir a position relative na Main acabou afetando o comportamento do Nav ficar colado no topo da página (mesmo o Nav nem sendo filho da Main, pois está fora dela), e no dia da aula acabamos deixando o position relative comentado aqui no main, para manter a aderência do código ao que foi pedido nos enunciados do exercício. 
   
+  Ocorre que questionei a Ana pelo Discord como poderíamos resolver isso, e ela me passou uma solução que deu certo. Abaixo coloco minha pergunta original e a resposta original dela também. A alteração que faltava, além de deixar a position relative na main descomentada, era acrescentar a propriedade z-index do CSS no Nav para corrigir o problema.
+
+  Minha pergunta: Oi Ana, boa noite! Ainda sobre a aula de CSS 2, fiquei com uma questão no exercício de fixação.  Na parte 2, quando alteramos o aside para absolute + inferior direito, ele fica no canto da página conforme o esperado, e nenhum comportamento na página é alterado! No entanto quando colocamos um position relative na main, pra deixar o aside melhor posicionado, quando fazemos o scroll da página a section passa por cima do Nav, no entanto dá pra perceber que a position sticky que colocamos no Nav + o top: 0 ainda funcionam, se vê pelas bordas que o Nav continua ali, mas a section passa por cima do Nav depois que colocamos o relative na Main, então queria tentar entender o motivo desse comportamento e se existe alguma trava pra evitar essa sobreposição!
+
+  Resposta da Ana: Oi Leo, quando usamos o position relative, o elemento em questão altera o que chamamos de stacking context do HTML. Stacking context é como se fosse uma visualização 3d do HTML e nós podemos alterar com o uso da propriedade z-index do CSS. Normalmente, o z-index de um elemento é auto (ou automático), mas o position relative altera isso. E é por isso que nesse caso a main fica por cima do nav.
+
+  nav {
+    z-index: 1; //aqui qualquer valor acima de 0 vai fazer ele passar pra cima
+};
+  */
+
+  aside{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
   section{
     height: 120px;
     width: 180px;
@@ -25,13 +46,32 @@
     padding: 20px;
     margin: 10px 0;
   }
+
+  .section2:active{
+    background-color: green;
+  }
+
+  .section1 {
+    text-align: center;
+  }
   
   nav{
     padding: 20px;
-    background-color: white;
+    background-color: aquamarine;
+    position: sticky;
+    height: 15px;
+    top: 0;
+    z-index: 1;
   }
+
+  /*Aqui no Nav, a Parte 2 do exercício pede que quando ele chegar no topo da tela, ele deve ficar colado lá, e para isso acrescentamos a position sticky, e também o top ZERO, onde este top:0 está indicando que não haja espaço entre esse Nav e o topo da página, como se fosse uma margem zerada. Ocorre que no vídeo do material assíncrono o instrutor disse que para esse posicionamento sticky funcionar, também deveríamos colocar uma altura, mas nesse caso aqui eu comentei a altura, pois apenas colocando o position + o top já foi suficiente pra colar o Nav no topo assim que fazemos a rolagem da página. Fizemos o teste colocando somente o position + a altura, e neste caso a propriedade sticky acabou não funcionando.*/
   
   footer{
     background-color: #abd1c6;
     padding: 20px;
+    text-align: center;
+  }
+
+  footer:hover{
+    background-color: yellow;
   }
